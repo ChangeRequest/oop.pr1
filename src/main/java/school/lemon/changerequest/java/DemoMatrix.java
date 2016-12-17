@@ -5,6 +5,8 @@ package school.lemon.changerequest.java;
  */
 public class DemoMatrix {
     public static void main(String[] args) {
+
+
         double[][] matrix_A = {{4., 2.}, {9., 0.}};
         Matrix matrixA = new Matrix(matrix_A);
 

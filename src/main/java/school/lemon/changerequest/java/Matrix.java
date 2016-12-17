@@ -22,6 +22,11 @@ public class Matrix {
     }
 
     public Matrix(double[][] matrix) {
+
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i].length != matrix[0].length)
+                throw new RuntimeException("Illegal vector dimensions"); //verification that all rows has the same columns number
+        }
         this.rows = matrix.length;
         this.columns = matrix[0].length;
         this.matrix = new double[rows][columns];

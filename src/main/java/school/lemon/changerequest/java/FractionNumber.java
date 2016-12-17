@@ -13,24 +13,31 @@ public class FractionNumber {
             this.dividend = dividend;
             this.divizor = 1;
         } else {
-            int maxValue;
-            int minValue;
-            int nod = 1;
-            if (dividend > divizor) {
-                maxValue = dividend;
-                minValue = divizor;
-            } else {
-                maxValue = divizor;
-                minValue = dividend;
-            }
-            for (nod = minValue; nod <= maxValue; nod--) {
-                if (dividend % nod == 0 & divizor % nod == 0) break;
-            }
-
+            this.dividend = dividend;
+            this.divizor = divizor;
+            int nod = nod(this.dividend, this.divizor);
             this.dividend = dividend / nod;
             this.divizor = divizor / nod;
         }
 
+    }
+
+    public int nod(int dividend, int divizor) {
+        int maxValue;
+        int minValue;
+        int nod;
+        if (dividend > divizor) {
+            maxValue = dividend;
+            minValue = divizor;
+        } else {
+            maxValue = divizor;
+            minValue = dividend;
+        }
+        for (nod = maxValue; nod >= minValue; nod--) {
+            if (dividend % nod == 0 & divizor % nod == 0)
+                return nod;
+        }
+        return 1;
     }
 
     public FractionNumber(int dividend) {
