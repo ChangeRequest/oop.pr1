@@ -23,7 +23,7 @@ public class APP {
         employees[3].setSalary(100.);
         employees[3].setWorkedHours(320);
 
-        employees[4] = new Manager("Elina");
+        employees[4] = new Manager("Emma");
         employees[4].setSalary(100.);
         employees[4].setWorkedHours(80);
 
@@ -33,7 +33,7 @@ public class APP {
 
         Accountant accountant = new Accountant(employees);
 
-        System.out.println("Employees salary is " + accountant.calcSalary(employees));
+        System.out.println("Employees salary is " + accountant.calcSalary());
 
 
     }

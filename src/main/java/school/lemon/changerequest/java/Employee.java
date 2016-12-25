@@ -7,7 +7,7 @@ public class Employee {
     private String name;
     private double salary;
     private int workedHours;
-    public static final int hoursInMonth = 160;
+    public static final int HOURS_IN_MONTH = 160;
 
     public Employee() {
     }
@@ -34,17 +34,17 @@ public class Employee {
 
 
     public double getRatioOfWorkedHours() {
-        double ratioHours = (double) workedHours / hoursInMonth;
+        double ratioHours = (double) workedHours / HOURS_IN_MONTH;
         return ratioHours;
     }
 
     public double calculateSalary() {
         double currentSalary = getSalary() * getRatioOfWorkedHours();
-        return currentSalary;
+        return (currentSalary > getSalary()) ? getSalary() : currentSalary;
     }
 
     @Override
     public String toString() {
-        return "Current month salary" + getName() + calculateSalary();
+        return "Current month salary " + getName() + " " + calculateSalary();
     }
 }

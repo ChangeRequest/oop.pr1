@@ -8,5 +8,11 @@ public class Programmer extends Employee {
     public Programmer(String name) {
         super(name);
     }
+
+    @Override
+    public double calculateSalary() {
+        double currentSalary = getSalary() * getRatioOfWorkedHours();
+        return currentSalary;
+    }
 }
 

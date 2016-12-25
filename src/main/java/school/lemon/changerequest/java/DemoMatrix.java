@@ -17,13 +17,13 @@ public class DemoMatrix {
         System.out.println("______________");
         System.out.print("Matrix B" + "\n" + matrixB.toString());
         System.out.println("______________");
-        System.out.print("Add matrix" + "\n" + matrixA.addMatrix(matrixB).toString());
+        System.out.print("Add matrix" + "\n" + matrixA.add(matrixB).toString());
         System.out.println("______________");
-        System.out.print("Subtract matrix" + "\n" + matrixA.subtractMatrix(matrixB).toString());
+        System.out.print("Subtract matrix" + "\n" + matrixA.sub(matrixB).toString());
         System.out.println("______________");
-        System.out.print("Multiply by a number" + "\n" + matrixA.multiplyMatrixNumber(5).toString());
+        System.out.print("Multiply by a number" + "\n" + matrixA.mul(5).toString());
         System.out.println("______________");
-        System.out.print("Multiply matrix" + "\n" + matrixA.multiplyMatrix(matrixB).toString());
+        System.out.print("Multiply matrix" + "\n" + matrixA.mul(matrixB).toString());
         System.out.println("______________");
         System.out.print("Transposition matrix" + "\n" + matrixA.transpositionMatrix().toString());
         System.out.println("______________");

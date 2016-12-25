@@ -11,7 +11,7 @@ public class FractionNumberDemo {
         System.out.println("FractionNumber1 = " + fractionNumber1.toString());
         System.out.println("FractionNumber2 = " + fractionNumber2.toString());
         System.out.println("FractionNumber2 dividend = " + fractionNumber2.getDividend());
-        System.out.println("FractionNumber2 divizor = " + fractionNumber2.getDivizor());
+        System.out.println("FractionNumber2 divizor = " + fractionNumber2.getDivisor());
         System.out.println("DecimalValueFractionNumber " + String.format("%.2f", fractionNumber1.getDecimalValueFractionNumber()));
         System.out.println("Add FractionNumber = " + fractionNumber1.addFractionNumber(fractionNumber2));
         System.out.println("Subtract FractionNumber = " + fractionNumber1.subtractFractionNumber(fractionNumber2));

@@ -6,7 +6,7 @@ package school.lemon.changerequest.java;
  */
 public class Accountant extends Employee {
 
-    Employee[] employees;
+    private Employee[] employees;
 
     public Accountant(Employee[] employees) {
         super();
@@ -17,17 +17,12 @@ public class Accountant extends Employee {
         super(name);
     }
 
-    public double calcSalary(Employee[] emp) {
+    public double calcSalary() {            //calculate overall salary for all accountable employees (including himself)
         double count = 0.;
-        for (Employee e : emp) {
+        for (Employee e : employees) {
             count += e.calculateSalary();
         }
         return count;
-    }
-
-    @Override
-    public double calculateSalary() {
-        return (super.calculateSalary() > super.getSalary()) ? super.getSalary() : super.calculateSalary();
     }
 
 }

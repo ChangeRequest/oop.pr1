@@ -5,36 +5,36 @@ package school.lemon.changerequest.java;
  */
 public class FractionNumber {
     private int dividend;
-    private int divizor;
+    private int divisor;
 
-    public FractionNumber(int dividend, int divizor) {
-        if (divizor == 0) throw new IllegalArgumentException("divisor must not be zero");
+    public FractionNumber(int dividend, int divisor) {
+        if (divisor == 0) throw new IllegalArgumentException("divisor must not be zero");
         if (dividend == 0) {
             this.dividend = dividend;
-            this.divizor = 1;
+            this.divisor = 1;
         } else {
             this.dividend = dividend;
-            this.divizor = divizor;
-            int nod = nod(this.dividend, this.divizor);
+            this.divisor = divisor;
+            int nod = nod(this.dividend, this.divisor);
             this.dividend = dividend / nod;
-            this.divizor = divizor / nod;
+            this.divisor = divisor / nod;
         }
 
     }
 
-    public int nod(int dividend, int divizor) {
+    public int nod(int dividend, int divisor) {
         int maxValue;
         int minValue;
         int nod;
-        if (dividend > divizor) {
+        if (dividend > divisor) {
             maxValue = dividend;
-            minValue = divizor;
+            minValue = divisor;
         } else {
-            maxValue = divizor;
+            maxValue = divisor;
             minValue = dividend;
         }
         for (nod = maxValue; nod >= minValue; nod--) {
-            if (dividend % nod == 0 & divizor % nod == 0)
+            if (dividend % nod == 0 & divisor % nod == 0)
                 return nod;
         }
         return 1;
@@ -42,30 +42,30 @@ public class FractionNumber {
 
     public FractionNumber(int dividend) {
         this.dividend = dividend;
-        this.divizor = 1;
+        this.divisor = 1;
     }
 
     public int getDividend() {
         return dividend;
     }
 
-    public int getDivizor() {
-        return divizor;
+    public int getDivisor() {
+        return divisor;
     }
 
     public double getDecimalValueFractionNumber() {
-        return (double) dividend / (double) divizor;
+        return (double) dividend / (double) divisor;
     }
 
     public FractionNumber addFractionNumber(FractionNumber fractionNumber) {
         int newDividend;
         int newDivisor;
-        if (divizor == fractionNumber.divizor) {
+        if (divisor == fractionNumber.divisor) {
             newDividend = dividend + fractionNumber.dividend;
-            newDivisor = divizor;
+            newDivisor = divisor;
         } else {
-            newDivisor = divizor * fractionNumber.divizor;
-            newDividend = dividend * fractionNumber.divizor + divizor * fractionNumber.dividend;
+            newDivisor = divisor * fractionNumber.divisor;
+            newDividend = dividend * fractionNumber.divisor + divisor * fractionNumber.dividend;
         }
         return new FractionNumber(newDividend, newDivisor);
     }
@@ -73,12 +73,12 @@ public class FractionNumber {
     public FractionNumber subtractFractionNumber(FractionNumber fractionNumber) {
         int newDividend;
         int newDivisor;
-        if (divizor == fractionNumber.divizor) {
+        if (divisor == fractionNumber.divisor) {
             newDividend = dividend - fractionNumber.dividend;
-            newDivisor = divizor;
+            newDivisor = divisor;
         } else {
-            newDivisor = divizor * fractionNumber.divizor;
-            newDividend = dividend * fractionNumber.divizor - divizor * fractionNumber.dividend;
+            newDivisor = divisor * fractionNumber.divisor;
+            newDividend = dividend * fractionNumber.divisor - divisor * fractionNumber.dividend;
         }
         return new FractionNumber(newDividend, newDivisor);
     }
@@ -86,7 +86,7 @@ public class FractionNumber {
     public FractionNumber multiplyFractionNumber(FractionNumber fractionNumber) {
         int newDividend;
         int newDivisor;
-        newDivisor = divizor * fractionNumber.divizor;
+        newDivisor = divisor * fractionNumber.divisor;
         newDividend = dividend * fractionNumber.dividend;
         return new FractionNumber(newDividend, newDivisor);
     }
@@ -94,16 +94,16 @@ public class FractionNumber {
     public FractionNumber divideFractionNumber(FractionNumber fractionNumber) {
         int newDividend;
         int newDivisor;
-        newDividend = dividend * fractionNumber.divizor;
-        newDivisor = divizor * fractionNumber.dividend;
+        newDividend = dividend * fractionNumber.divisor;
+        newDivisor = divisor * fractionNumber.dividend;
         return new FractionNumber(newDividend, newDivisor);
     }
 
-    public static final FractionNumber ONE = new FractionNumber(1, 1);
-    public static final FractionNumber ZERO = new FractionNumber(0, 1);
+    public static final FractionNumber ONE = new FractionNumber(1);
+    public static final FractionNumber ZERO = new FractionNumber(0);
 
     @Override
     public String toString() {
-        return String.format("%1$d/%2$d", dividend, divizor);
+        return String.format("%1$d/%2$d", dividend, divisor);
     }
 }

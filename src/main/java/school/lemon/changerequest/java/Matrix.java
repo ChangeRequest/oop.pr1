@@ -12,8 +12,7 @@ public class Matrix {
 
     public Matrix(int rows, int columns) {
         if ((rows < 1) || (columns < 1)) {
-            System.out.println("Cannot create a matrix smaller that 1x1");
-            System.exit(0);
+            throw new IllegalArgumentException("Cannot create a matrix smaller that 1x1");
         } else {
             this.rows = rows;
             this.columns = columns;
@@ -25,7 +24,7 @@ public class Matrix {
 
         for (int i = 1; i < matrix.length; i++) {
             if (matrix[i].length != matrix[0].length)
-                throw new RuntimeException("Illegal vector dimensions"); //verification that all rows has the same columns number
+                throw new IllegalArgumentException("Illegal dimensions."); //verification that all rows has the same columns number
         }
         this.rows = matrix.length;
         this.columns = matrix[0].length;
@@ -37,14 +36,14 @@ public class Matrix {
         }
     }
 
-    public boolean checkSize(Matrix matrixB) {
+    private boolean checkSize(Matrix matrixB) {
         if ((this.rows != matrixB.rows) || (this.columns != matrixB.columns))
-            throw new RuntimeException("Illegal vector dimensions.");
+            throw new IllegalArgumentException("Illegal dimensions.");
         return true;
 
     }
 
-    public Matrix addMatrix(Matrix matrixB) {
+    public Matrix add(Matrix matrixB) {
 
         checkSize(matrixB);
 
@@ -57,7 +56,7 @@ public class Matrix {
         return matrixAplusB;
     }
 
-    public Matrix subtractMatrix(Matrix matrixB) {
+    public Matrix sub(Matrix matrixB) {
 
         checkSize(matrixB);
 
@@ -71,9 +70,9 @@ public class Matrix {
     }
 
 
-    public Matrix multiplyMatrix(Matrix matrixB) {
+    public Matrix mul(Matrix matrixB) {
 
-        if (this.columns != matrixB.rows) throw new RuntimeException("Illegal vector dimensions.");
+        if (this.columns != matrixB.rows) throw new IllegalArgumentException("Illegal dimensions.");
 
         Matrix multiplyMatrix = new Matrix(rows, columns);
         double count = 0.;
@@ -90,7 +89,7 @@ public class Matrix {
     }
 
 
-    public Matrix multiplyMatrixNumber(int number) {
+    public Matrix mul(int number) {
         Matrix matrixMultiplyNumber = new Matrix(rows, columns);
 
         for (int i = 0; i < rows; i++) {
@@ -113,14 +112,14 @@ public class Matrix {
 
     @Override
     public String toString() {
-        StringBuilder matrixStr = new StringBuilder();
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                matrixStr.append(matrix[i][j]).append("\t\t");
+                str.append(this.matrix[i][j]).append("\t\t");
             }
-            matrixStr.append("\n");
+            str.append("\n");
         }
-        return String.valueOf(matrixStr);
+        return str.toString();
     }
 
 }
