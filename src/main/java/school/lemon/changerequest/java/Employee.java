@@ -9,9 +9,6 @@ public class Employee {
     private int workedHours;
     public static final int HOURS_IN_MONTH = 160;
 
-    public Employee() {
-    }
-
     public Employee(String name) {
         this.name = name;
     }
@@ -31,7 +28,6 @@ public class Employee {
     public String getName() {
         return name;
     }
-
 
     public double getRatioOfWorkedHours() {
         double ratioHours = (double) workedHours / HOURS_IN_MONTH;

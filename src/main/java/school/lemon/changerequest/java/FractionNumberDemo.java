@@ -8,8 +8,9 @@ public class FractionNumberDemo {
         FractionNumber fractionNumber1 = new FractionNumber(3, 9);
         FractionNumber fractionNumber2 = new FractionNumber(1, 6);
         //    FractionNumber fractionNumber3 = new FractionNumber(1,0);
-        System.out.println("FractionNumber1 = " + fractionNumber1.toString());
-        System.out.println("FractionNumber2 = " + fractionNumber2.toString());
+
+        System.out.println("FractionNumber1 = " + fractionNumber1);
+        System.out.println("FractionNumber2 = " + fractionNumber2);
         System.out.println("FractionNumber2 dividend = " + fractionNumber2.getDividend());
         System.out.println("FractionNumber2 divizor = " + fractionNumber2.getDivisor());
         System.out.println("DecimalValueFractionNumber " + String.format("%.2f", fractionNumber1.getDecimalValueFractionNumber()));

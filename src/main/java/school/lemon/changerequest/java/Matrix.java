@@ -4,11 +4,9 @@ package school.lemon.changerequest.java;
  * Created by lera on 11.12.16.
  */
 public class Matrix {
-
     private int rows;
     private int columns;
     private double[][] matrix;
-
 
     public Matrix(int rows, int columns) {
         if ((rows < 1) || (columns < 1)) {
@@ -40,7 +38,6 @@ public class Matrix {
         if ((this.rows != matrixB.rows) || (this.columns != matrixB.columns))
             throw new IllegalArgumentException("Illegal dimensions.");
         return true;
-
     }
 
     public Matrix add(Matrix matrixB) {
@@ -69,7 +66,6 @@ public class Matrix {
         return matrixAsubtractB;
     }
 
-
     public Matrix mul(Matrix matrixB) {
 
         if (this.columns != matrixB.rows) throw new IllegalArgumentException("Illegal dimensions.");
@@ -87,7 +83,6 @@ public class Matrix {
         }
         return multiplyMatrix;
     }
-
 
     public Matrix mul(int number) {
         Matrix matrixMultiplyNumber = new Matrix(rows, columns);
@@ -121,5 +116,4 @@ public class Matrix {
         }
         return str.toString();
     }
-
 }

@@ -19,10 +19,9 @@ public class FractionNumber {
             this.dividend = dividend / nod;
             this.divisor = divisor / nod;
         }
-
     }
 
-    public int nod(int dividend, int divisor) {
+    private int nod(int dividend, int divisor) {
         int maxValue;
         int minValue;
         int nod;

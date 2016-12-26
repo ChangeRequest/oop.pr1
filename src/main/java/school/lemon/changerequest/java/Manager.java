@@ -8,9 +8,4 @@ public class Manager extends Employee {
     public Manager(String name) {
         super(name);
     }
-
-    @Override
-    public double calculateSalary() {
-        return (super.calculateSalary() > super.getSalary()) ? super.getSalary() : super.calculateSalary();
-    }
 }
