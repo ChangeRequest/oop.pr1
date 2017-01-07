@@ -7,17 +7,19 @@ public class Demo {
     public static void main(String[] args) {
         Programmer programmer = new Programmer("Stiv");
         programmer.setSalary(100);
-        programmer.working(80);
+        programmer.working(320);
         System.out.println(programmer);
 
         Manager manager = new Manager("Bob");
         manager.setSalary(100);
-        manager.working(80);
+        manager.working(320);
         System.out.println(manager);
 
         Accountant accountant = new Accountant("Gloria");
         accountant.setSalary(100);
         accountant.working(320);
         System.out.println(accountant);
+
+        System.out.println(accountant.calculateSalaryForEmployee(manager));
     }
 }

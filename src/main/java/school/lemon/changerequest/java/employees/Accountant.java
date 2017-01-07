@@ -9,7 +9,10 @@ public class Accountant extends Employee {
     }
 
     public double calculateSalaryForEmployee(Employee e) {
+        if(e instanceof Programmer || e instanceof Manager || e instanceof Accountant)
+        {
+            return e.calculateSalary();
+        }
         return 0;
-
     }
 }
