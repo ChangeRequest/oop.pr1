@@ -7,32 +7,14 @@ import school.lemon.changerequest.java.fractionnumber.FractionNumber;
 import java.util.Random;
 
 public class Main {
-
-    static void employeeTest() {
-        System.out.println("---------------------------------------------------");
-        System.out.println("Start testing hierarchy Employee\n");
-        Manager manager = new Manager(100);
-        Programmer programmer = new Programmer(100, 20);
-        Accountant accountant = new Accountant(100, 40);
-        System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
-
-        manager.addWorkHours(200);
-        programmer.addWorkHours(180);
-        accountant.addWorkHours(160);
-        System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
-
-        manager.setSalary(200);
-        programmer.setSalary(200);
-        accountant.setSalary(200);
-        System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
-
-        Employee[] workers = new Employee[2];
-        workers[0] = manager;
-        workers[1] = programmer;
-        System.out.println("Overall salary = " + accountant.calculateAllSalary(workers));
-        System.out.println("---------------------------------------------------");
+    public static void main(String[] args) {
+        FractionNumberTest.Start();
+        MatrixTest.Start();
+        EmployeeTest.Start();
     }
+}
 
+class FractionNumberTest {
     static void normalizeTest(int dividend, int divisor) {
         FractionNumber normalizeTest = new FractionNumber(dividend, divisor);
         System.out.println(dividend + "/" + divisor + " = " + normalizeTest);
@@ -47,7 +29,7 @@ public class Main {
         System.out.println(value1 + " / " + value2 + " = " + (value1.divide(value2)));
     }
 
-    static void fractionNumberTest() {
+    static void Start() {
 
         System.out.println("---------------------------------------------------");
         System.out.println("Start testing class FractionNumbers\n");
@@ -86,7 +68,10 @@ public class Main {
         System.out.println("---------------------------------------------------");
     }
 
-    static void matrixTest() {
+}
+
+class MatrixTest {
+    static void Start() {
 
         System.out.println("---------------------------------------------------");
         System.out.println("Start testing class Matrix\n");
@@ -141,11 +126,31 @@ public class Main {
         System.out.println("Transpose D = \n" + matrixD.transpose());
         System.out.println("---------------------------------------------------");
     }
-
-    public static void main(String[] args) {
-        fractionNumberTest();
-        matrixTest();
-        employeeTest();
-    }
 }
 
+class EmployeeTest {
+    static void Start() {
+        System.out.println("---------------------------------------------------");
+        System.out.println("Start testing hierarchy Employee\n");
+        Manager manager = new Manager(100);
+        Programmer programmer = new Programmer(100, 20);
+        Accountant accountant = new Accountant(100, 40);
+        System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
+
+        manager.addWorkHours(200);
+        programmer.addWorkHours(180);
+        accountant.addWorkHours(160);
+        System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
+
+        manager.setSalary(200);
+        programmer.setSalary(200);
+        accountant.setSalary(200);
+        System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
+
+        Employee[] workers = new Employee[2];
+        workers[0] = manager;
+        workers[1] = programmer;
+        System.out.println("Overall salary = " + accountant.calculateAllSalary(workers));
+        System.out.println("---------------------------------------------------");
+    }
+}

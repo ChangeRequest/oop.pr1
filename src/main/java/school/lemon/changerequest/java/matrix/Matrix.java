@@ -1,4 +1,5 @@
 package school.lemon.changerequest.java.matrix;
+
 import java.util.Random;
 
 public class Matrix {
@@ -87,11 +88,27 @@ public class Matrix {
         return result.toString();
     }
 
-    public void fillWithRandom(Random rnd)
-    {
-
+    public void fillWithRandom(Random rnd) {
         for (int i = 0; i < row; i++)
             for (int j = 0; j < column; j++)
-                value[i][j]= rnd.nextInt(10);
+                value[i][j] = rnd.nextInt(10);
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+
+        if (obj == null)
+            return false;
+
+        if (!(getClass() == obj.getClass()))
+            return false;
+        else {
+            Matrix tmp = (Matrix) obj;
+            if (column != tmp.column || row != tmp.row)
+                return true;
+            else
+                return false;
+        }
     }
 }
