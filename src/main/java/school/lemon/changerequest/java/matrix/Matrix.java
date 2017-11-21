@@ -106,9 +106,12 @@ public class Matrix {
         else {
             Matrix tmp = (Matrix) obj;
             if (column != tmp.column || row != tmp.row)
-                return true;
-            else
                 return false;
+            for (int i = 0; i < row; i++)
+                for (int j = 0; j < column; j++)
+                    if (value[i][j] != tmp.value[i][j])
+                        return false;
+            return true;
         }
     }
 }
