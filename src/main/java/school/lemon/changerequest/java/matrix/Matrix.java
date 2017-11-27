@@ -1,47 +1,63 @@
 package school.lemon.changerequest.java.matrix;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Matrix {
-    private int value[][];
-    private int row;
-    private int column;
+    private double value[][];
+    private int rows;
+    private int columns;
+
+    public Matrix(int rows, int columns) {
+        if (rows <= 0 || columns <= 0)
+            throw new NegativeArraySizeException("Rows <= 0 or columns <= 0");
+        this.rows = rows;
+        this.columns = columns;
+        value = new double[rows][columns];
+    }
+
+    public Matrix(Matrix matrix) {
+        this(matrix.rows, matrix.columns);
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
+                value[i][j] = matrix.value[i][j];
+    }
 
     public Matrix add(Matrix matrix) {
         if (!isSameSize(matrix))
-            return null;
+            throw new IllegalArgumentException("Matrixes have different sizes");
         Matrix result = new Matrix(this);
-        for (int i = 0; i < row; i++)
-            for (int j = 0; j < column; j++)
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
                 result.value[i][j] += matrix.value[i][j];
         return result;
     }
 
     public Matrix subtract(Matrix matrix) {
         if (!isSameSize(matrix))
-            return null;
+            throw new IllegalArgumentException("Matrixes have different sizes");
         Matrix result = new Matrix(this);
-        for (int i = 0; i < row; i++)
-            for (int j = 0; j < column; j++)
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
                 result.value[i][j] -= matrix.value[i][j];
         return result;
     }
 
     public Matrix multiply(int n) {
         Matrix result = new Matrix(this);
-        for (int i = 0; i < row; i++)
-            for (int j = 0; j < column; j++)
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
                 result.value[i][j] *= n;
         return result;
     }
 
     public Matrix multiply(Matrix matrix) {
-        if (column != matrix.row)
-            return null;
-        Matrix result = new Matrix(row, matrix.column);
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < matrix.column; j++) {
-                for (int k = 0; k < column; k++) {
+        if (columns != matrix.rows)
+            throw new IllegalArgumentException("Matrixes aren`t compatible");
+        Matrix result = new Matrix(rows, matrix.columns);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < matrix.columns; j++) {
+                for (int k = 0; k < columns; k++) {
                     result.value[i][j] += value[i][k] * matrix.value[k][j];
                 }
             }
@@ -50,48 +66,34 @@ public class Matrix {
     }
 
     public Matrix transpose() {
-        Matrix result = new Matrix(column, row);
-        for (int i = 0; i < column; i++)
-            for (int j = 0; j < row; j++)
+        Matrix result = new Matrix(columns, rows);
+        for (int i = 0; i < columns; i++)
+            for (int j = 0; j < rows; j++)
                 result.value[i][j] = value[j][i];
         return result;
     }
 
     private boolean isSameSize(Matrix matrix) {
-        if (column != matrix.column || row != matrix.row)
-            return false;
-        return true;
-    }
-
-    public Matrix(int row, int column) {
-        if (row <= 0 || column <= 0)
-            throw new IllegalArgumentException("Row and column must be positive");
-        this.row = row;
-        this.column = column;
-        value = new int[row][column];
-    }
-
-    public Matrix(Matrix matrix) {
-        this(matrix.row, matrix.column);
-        for (int i = 0; i < row; i++)
-            for (int j = 0; j < column; j++)
-                value[i][j] = matrix.value[i][j];
+        if (columns == matrix.columns && rows == matrix.rows)
+            return true;
+        return false;
     }
 
     public String toString() {
+
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < column; j++)
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++)
                 result.append(value[i][j]).append(' ');
             result.append('\n');
         }
         return result.toString();
     }
 
-    public void fillWithRandom(Random rnd) {
-        for (int i = 0; i < row; i++)
-            for (int j = 0; j < column; j++)
-                value[i][j] = rnd.nextInt(10);
+    public void fillWithRandomIntegers(Random rnd, int maxPossibleValue) {
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
+                value[i][j] = rnd.nextInt(maxPossibleValue);
     }
 
     public boolean equals(Object obj) {
@@ -105,13 +107,9 @@ public class Matrix {
             return false;
         else {
             Matrix tmp = (Matrix) obj;
-            if (column != tmp.column || row != tmp.row)
+            if (columns != tmp.columns || rows != tmp.rows)
                 return false;
-            for (int i = 0; i < row; i++)
-                for (int j = 0; j < column; j++)
-                    if (value[i][j] != tmp.value[i][j])
-                        return false;
-            return true;
+            return Arrays.equals(value, tmp.value);
         }
     }
 }

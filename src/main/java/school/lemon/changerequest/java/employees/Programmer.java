@@ -7,25 +7,25 @@ public class Programmer extends Employee {
         super();
     }
 
-    public Programmer(double salary, int hours) {
-        super(salary, hours);
+    public Programmer(double monthlySalary, int workedHours) {
+        super(monthlySalary, workedHours);
     }
 
-    public Programmer(double salary) {
-        super(salary);
+    public Programmer(double monthlySalary) {
+        super(monthlySalary);
     }
 
     public double getCurrentSalary() {
-        double result = salary * getRatio();
+        double result = monthlySalary * getRatioOfWorkedHours();
         return result;
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Programmer. Salary = ").append(salary).append(". Hours = " + hours).
-                append(". Ratio = ").append(getRatio()).append(". Current salary = ").append(getCurrentSalary());
-        ;
-        return result.toString();
+        final StringBuilder sb = new StringBuilder("Programmer{");
+        sb.append("monthlySalary=").append(monthlySalary);
+        sb.append(", workedHours=").append(workedHours);
+        sb.append('}');
+        return sb.toString();
     }
-
 }

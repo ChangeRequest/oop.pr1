@@ -1,11 +1,23 @@
 package school.lemon.changerequest.java.fractionnumber;
 
 public class FractionNumber {
+    public static final FractionNumber ONE = new FractionNumber(1, 1);
+    public static final FractionNumber ZERO = new FractionNumber(0, 1);
+
     private int dividend;
     private int divisor;
 
-    public static FractionNumber ONE = new FractionNumber(1, 1);
-    public static FractionNumber ZERO = new FractionNumber(0, 1);
+    public FractionNumber(int dividend, int divisor) {
+        if (divisor == 0)
+            throw new IllegalArgumentException("Divisor is equal to zero");
+        this.divisor = divisor;
+        this.dividend = dividend;
+        normalize();
+    }
+
+    public FractionNumber(int dividend) {
+        this(dividend, 1);
+    }
 
     private void normalize() {
         if (dividend == 0) {
@@ -31,18 +43,6 @@ public class FractionNumber {
         return a;
     }
 
-    public FractionNumber(int dividend, int divisor) {
-        if (divisor == 0)
-            throw new IllegalArgumentException("Divisor is equal to zero");
-        this.divisor = divisor;
-        this.dividend = dividend;
-        normalize();
-    }
-
-    public FractionNumber(int dividend) {
-        this.dividend = dividend;
-        this.divisor = 1;
-    }
 
     public int getDividend() {
         return dividend;
@@ -56,6 +56,7 @@ public class FractionNumber {
         double result = (double) dividend / divisor;
         return result;
     }
+
 
     public FractionNumber add(FractionNumber value) {
         int resultDividend = dividend * value.divisor + divisor * value.dividend;
@@ -84,6 +85,7 @@ public class FractionNumber {
         FractionNumber result = new FractionNumber(resultDividend, resultDivisor);
         return result;
     }
+
 
     public String toString() {
         StringBuilder result = new StringBuilder().append(dividend).append('/').append(divisor);

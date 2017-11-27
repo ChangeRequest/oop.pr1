@@ -6,19 +6,20 @@ public class Manager extends Employee {
         super();
     }
 
-    public Manager(double salary, int hours) {
-        super(salary, hours);
+    public Manager(double monthlySalary, int workedHours) {
+        super(monthlySalary, workedHours);
     }
 
-    public Manager(double salary) {
-        super(salary);
+    public Manager(double monthlySalary) {
+        super(monthlySalary);
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Manager. Salary = ").append(salary).append(". Hours = " + hours).
-                append(". Ratio = ").append(getRatio()).append(". Current salary = ").append(getCurrentSalary());
-        ;
-        return result.toString();
+        final StringBuilder sb = new StringBuilder("Manager{");
+        sb.append("monthlySalary=").append(monthlySalary);
+        sb.append(", workedHours=").append(workedHours);
+        sb.append('}');
+        return sb.toString();
     }
 }

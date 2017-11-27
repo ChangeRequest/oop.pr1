@@ -6,26 +6,28 @@ public class Accountant extends Employee {
         super();
     }
 
-    public Accountant(double salary, int hours) {
-        super(salary, hours);
+    public Accountant(double monthlySalary, int workedHours) {
+        super(monthlySalary, workedHours);
     }
 
-    public Accountant(double salary) {
-        super(salary);
+    public Accountant(double monthlySalary) {
+        super(monthlySalary);
     }
 
     public double calculateAllSalary(Employee[] employees) {
         double result = 0;
         for (Employee worker : employees)
-            result += worker.getCurrentSalary();
-        result += getCurrentSalary();
+            result += worker.getEarnedSalary();
+        result += getEarnedSalary();
         return result;
     }
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder("Accountant. Salary = ").append(salary).append(". Hours = " + hours).
-                append(". Ratio = ").append(getRatio()).append(". Current salary = ").append(getCurrentSalary());
-        return result.toString();
+        final StringBuilder sb = new StringBuilder("Accountant{");
+        sb.append("monthlySalary=").append(monthlySalary);
+        sb.append(", workedHours=").append(workedHours);
+        sb.append('}');
+        return sb.toString();
     }
 }

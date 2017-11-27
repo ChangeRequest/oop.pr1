@@ -8,13 +8,13 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        FractionNumberTest.Start();
-        MatrixTest.Start();
-        EmployeeTest.Start();
+        FractionNumberDemo.start();
+        MatrixDemo.start();
+        EmployeeDemo.start();
     }
 }
 
-class FractionNumberTest {
+class FractionNumberDemo {
     static void normalizeTest(int dividend, int divisor) {
         FractionNumber normalizeTest = new FractionNumber(dividend, divisor);
         System.out.println(dividend + "/" + divisor + " = " + normalizeTest);
@@ -29,7 +29,7 @@ class FractionNumberTest {
         System.out.println(value1 + " / " + value2 + " = " + (value1.divide(value2)));
     }
 
-    static void Start() {
+    static void start() {
 
         System.out.println("---------------------------------------------------");
         System.out.println("Start testing class FractionNumbers\n");
@@ -70,8 +70,8 @@ class FractionNumberTest {
 
 }
 
-class MatrixTest {
-    static void Start() {
+class MatrixDemo {
+    static void start() {
 
         System.out.println("---------------------------------------------------");
         System.out.println("Start testing class Matrix\n");
@@ -79,13 +79,13 @@ class MatrixTest {
 
         Matrix matrixA = new Matrix(3, 3);
         System.out.println("A = \n" + matrixA);
-        matrixA.fillWithRandom(rnd);
+        matrixA.fillWithRandomIntegers(rnd, 10);
         System.out.println(matrixA);
 
 
         Matrix matrixB = new Matrix(3, 3);
         System.out.println("B = \n" + matrixB);
-        matrixB.fillWithRandom(rnd);
+        matrixB.fillWithRandomIntegers(rnd, 10);
         System.out.print(matrixB);
         System.out.println("---------------------------------------------------");
 
@@ -110,9 +110,9 @@ class MatrixTest {
         System.out.println("---------------------------------------------------");
 
         Matrix matrixC = new Matrix(1, 4);
-        matrixC.fillWithRandom(rnd);
+        matrixC.fillWithRandomIntegers(rnd, 10);
         Matrix matrixD = new Matrix(4, 1);
-        matrixD.fillWithRandom(rnd);
+        matrixD.fillWithRandomIntegers(rnd, 10);
         System.out.println("C = \n" + matrixC);
         System.out.print("D = \n" + matrixD);
 
@@ -128,8 +128,8 @@ class MatrixTest {
     }
 }
 
-class EmployeeTest {
-    static void Start() {
+class EmployeeDemo {
+    static void start() {
         System.out.println("---------------------------------------------------");
         System.out.println("Start testing hierarchy Employee\n");
         Manager manager = new Manager(100);
@@ -137,14 +137,14 @@ class EmployeeTest {
         Accountant accountant = new Accountant(100, 40);
         System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
 
-        manager.addWorkHours(200);
-        programmer.addWorkHours(180);
-        accountant.addWorkHours(160);
+        manager.work(200);
+        programmer.work(180);
+        accountant.work(160);
         System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
 
-        manager.setSalary(200);
-        programmer.setSalary(200);
-        accountant.setSalary(200);
+        manager.setMonthlySalary(200);
+        programmer.setMonthlySalary(200);
+        accountant.setMonthlySalary(200);
         System.out.println(manager + "\n" + programmer + "\n" + accountant + "\n");
 
         Employee[] workers = new Employee[2];
